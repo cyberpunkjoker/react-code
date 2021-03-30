@@ -1,7 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
-
-
-
+import React, { Component } from 'react';
 export class BaseTest extends Component {
     state = {
         inputValue: undefined,

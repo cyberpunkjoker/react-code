@@ -1,5 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { Component } from 'react';
+
 import { BaseTest } from './react-base-test/base-test'
+import { LifeCycle } from './react-base-test/life-cycle'
 
 export default class Demo extends Component {
     state = {
@@ -10,6 +12,8 @@ export default class Demo extends Component {
         },
         childComputed: 0
     }
+    // 需要用的组件，挂载在这里
+    childBaseTest = null
 
     componentDidMount() {
         this.getChildMethods()
@@ -26,10 +30,12 @@ export default class Demo extends Component {
     }
 
     getChildMethods() {
+        // 
+        const value = this.childBaseTest.sampleCalc()
         this.setState({
-            childComputed: this.refs.demoChild.sampleCalc() 
+            // childComputed: this.refs.demoChild.sampleCalc() 已经弃用了
+            childComputed: value
         })
-        
     }
 
     render() {
@@ -37,15 +43,20 @@ export default class Demo extends Component {
         return (
             <div className='demo-home'>
                 <p>这里是demo的首页</p>
+                
                 {/* 测试父子组件之间的相互传值问题 */}
                 <BaseTest
-                    ref='demoChild'
+                    ref={el => this.childBaseTest = el}
                     info={formFatherInfo}
                     callbackParent={this.getChildValue}
                     justUseFatherMethods={this.justUseFatherMethods}
                 ></BaseTest>
+                
                 {/* 父子组件调用方法测试 */}
                 <p>这是子组件调用方法获取的值：{childComputed}</p>
+                
+                {/* 用来测试组件的生命周期问题 */}
+                <LifeCycle></LifeCycle>
             </div>
         )
     }
