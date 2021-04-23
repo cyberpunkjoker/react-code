@@ -1,0 +1,13 @@
+.demo-home{
+    background: rgba(0, 0, 0, .1);
+}
+
+/* 基础测试模块 */
+.base-demos {
+    background: pink;
+}
+
+/* 生命周期模块 */
+.life-cycle {
+    background: skyblue;
+}

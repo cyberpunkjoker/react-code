@@ -33,12 +33,12 @@ export class BaseTest extends Component {
 
     render() {
         let obj = this.props
-        console.log(obj);
+        // console.log(obj);
         return (
             <div className='base-demos'>
                 <p>用来测试react的一些基础知识</p>
                 {this.renderInputContent()}
-            </div>
+            </div> 
         )
     }
 }
