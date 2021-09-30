@@ -1,5 +1,6 @@
 // import './App.css';
-import RouteIndex from './view/index.jsx'
+import RouteIndex from "./view/index.jsx";
+import "antd/dist/antd.css";
 
 function App() {
   return (
